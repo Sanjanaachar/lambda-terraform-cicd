@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Uploading artifacts to S3"
+      - aws s3 cp layer/layer.zip s3://$S3_BUCKET/layer.zip
+      - aws s3 cp lambda/lambda_function.zip s3://$S3_BUCKET/lambda_function.zip
+
+artifacts:
+  files:
+    - '**/*'

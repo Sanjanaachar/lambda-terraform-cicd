@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  build:
+    commands:
+      - echo "Building Lambda Layer"
+      - cd layer
+      - zip -r layer.zip python
+      - cd ..
+      - echo "Zipping Lambda function"
+      - cd lambda
+      - zip -r lambda_function.zip lambda_function.py
+      - cd ..
+
+artifacts:
+  files:
+    - layer/layer.zip
+    - lambda/lambda_function.zip
