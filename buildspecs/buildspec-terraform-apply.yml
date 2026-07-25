@@ -3,9 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - curl -o terraform.zip https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_linux_amd64.zip
-      - unzip terraform.zip
-      - mv terraform /usr/local/bin/
+      - which terraform || (curl -o terraform.zip https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_linux_amd64.zip && unzip -o terraform.zip && mv terraform /usr/local/bin/)
+      - terraform -version
   build:
     commands:
       - cd terraform
@@ -14,4 +13,4 @@ phases:
 
 artifacts:
   files:
-    - terraform/**/*
+    - '**/*'
