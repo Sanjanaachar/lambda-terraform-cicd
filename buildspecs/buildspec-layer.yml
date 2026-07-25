@@ -17,5 +17,4 @@ phases:
 
 artifacts:
   files:
-    - layer/layer.zip
-    - lambda/lambda_function.zip
+    - '**/*'
